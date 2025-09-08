@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Gamepad2, Users, Trophy, Target, Zap, Star } from "lucide-react"
+import { Gamepad2, Users, Trophy, Target, Zap, Star, Play } from "lucide-react"
 import { useState } from "react"
 
 const games = [
@@ -35,120 +35,11 @@ const games = [
 export function ExploreSection() {
   const [showGameModal, setShowGameModal] = useState<string | null>(null)
 
-  const gameDetails = {
-    rapidball: {
-      title: "RapidBall",
-      description: "Test your football knowledge in lightning-fast multiplayer matches",
-      content: `
-        <div class="space-y-6">
-          <div class="bg-gradient-to-r from-primary/20 to-secondary/20 p-6 rounded-xl">
-            <h3 class="text-2xl font-heading text-primary mb-4">⚽ How to Play</h3>
-            <p class="text-lg">Rapid-Ball is a game where you choose the right choice between two footballers as quickly as possible. The correct choice is determined by the category of Rapid-Ball chosen (Jersey, Goals, Age, or Height).</p>
-          </div>
-          
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="glass-card p-6 rounded-xl">
-              <h4 class="text-xl font-heading text-secondary mb-3">🎯 Objective</h4>
-              <p>Aim to select the correct option accurately and swiftly, as the time allotted for each choice decreases gradually. If the timer runs out, the game will be over, and your final score will be displayed.</p>
-            </div>
-            
-            <div class="glass-card p-6 rounded-xl">
-              <h4 class="text-xl font-heading text-secondary mb-3">🏆 Token Play Mode</h4>
-              <p>Use tokens to earn "Trending Points". Each game round costs 1 token but rewards you with 5 Trending Points. Stay online while playing to ensure you receive your points.</p>
-            </div>
-          </div>
-          
-          <div class="bg-gradient-to-r from-secondary/10 to-primary/10 p-6 rounded-xl">
-            <h4 class="text-xl font-heading text-primary mb-3">🌟 Pro Tips</h4>
-            <ul class="list-disc pl-6 space-y-2">
-              <li>Study player statistics to improve your accuracy</li>
-              <li>Practice with different categories to become well-rounded</li>
-              <li>Stay focused as the timer speeds up in later rounds</li>
-              <li>Keep track of current season stats for better predictions</li>
-            </ul>
-          </div>
-        </div>
-      `,
-    },
-    bankeru: {
-      title: "Bankeru",
-      description: "Master the art of strategic card prediction in this thrilling group game",
-      content: `
-        <div class="space-y-6">
-          <div class="bg-gradient-to-r from-primary/20 to-secondary/20 p-6 rounded-xl">
-            <h3 class="text-2xl font-heading text-primary mb-4">🃏 How to Play</h3>
-            <p class="text-lg">Bankeru is an interesting card game often played in groups. It is a game of guessing whether a final drawn card will lie between two initially drawn cards.</p>
-          </div>
-          
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="glass-card p-6 rounded-xl">
-              <h4 class="text-xl font-heading text-secondary mb-3">🎮 Game Flow</h4>
-              <p>When the game starts, two initial cards are drawn. The player with the turn chooses to either draw a final card or skip that round. If they think the final card will lie between the two initial cards, they draw. Otherwise, they skip.</p>
-            </div>
-            
-            <div class="glass-card p-6 rounded-xl">
-              <h4 class="text-xl font-heading text-secondary mb-3">💡 Example</h4>
-              <p>If initial cards are '2' and 'J', there's a good chance the final card will be between these values. If you draw '6', you win as '6' lies between '2' and 'J'. If you draw 'Q', you lose as 'Q' is not between '2' and 'J'.</p>
-            </div>
-          </div>
-          
-          <div class="glass-card p-6 rounded-xl">
-            <h4 class="text-xl font-heading text-secondary mb-3">🏆 Token Play Mode</h4>
-            <p>Use tokens to earn "Trending Points". Each game round costs 1 token but rewards you with 5 Trending Points. Stay online while playing to ensure you receive your points.</p>
-          </div>
-          
-          <div class="bg-gradient-to-r from-secondary/10 to-primary/10 p-6 rounded-xl">
-            <h4 class="text-xl font-heading text-primary mb-3">🌟 Strategy Tips</h4>
-            <ul class="list-disc pl-6 space-y-2">
-              <li>Calculate probability based on card values and suits</li>
-              <li>Consider the gap between initial cards - larger gaps have better odds</li>
-              <li>Know when to skip - sometimes the safe play is the smart play</li>
-              <li>Watch other players' patterns to improve your own strategy</li>
-            </ul>
-          </div>
-        </div>
-      `,
-    },
-    hacker: {
-      title: "Hacker",
-      description: "Lightning-fast tile tapping action that tests your reflexes and precision",
-      content: `
-        <div class="space-y-6">
-          <div class="bg-gradient-to-r from-primary/20 to-secondary/20 p-6 rounded-xl">
-            <h3 class="text-2xl font-heading text-primary mb-4">⚡ How to Play</h3>
-            <p class="text-lg">The main idea of the game is to press the tiles as quickly as possible as they proceed downward across the screen before they pass the bottom edge. You should always click only the tile located last at the bottom.</p>
-          </div>
-          
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="glass-card p-6 rounded-xl">
-              <h4 class="text-xl font-heading text-secondary mb-3">🎯 Objective</h4>
-              <p>Tap tiles in sequence as they fall down the screen. Miss a tile or tap the wrong one, and it's game over! The speed increases as you progress, testing your reflexes to the limit.</p>
-            </div>
-            
-            <div class="glass-card p-6 rounded-xl">
-              <h4 class="text-xl font-heading text-secondary mb-3">🏆 Token Play Mode</h4>
-              <p>Use tokens to earn "Trending Points". Each game round costs 1 token but rewards you with 5 Trending Points. Stay online while playing to ensure you receive your points.</p>
-            </div>
-          </div>
-          
-          <div class="bg-gradient-to-r from-secondary/10 to-primary/10 p-6 rounded-xl">
-            <h4 class="text-xl font-heading text-primary mb-3">🌟 Pro Tips</h4>
-            <ul class="list-disc pl-6 space-y-2">
-              <li>Focus on the bottom row - always tap the lowest tile first</li>
-              <li>Use your peripheral vision to track multiple tiles</li>
-              <li>Stay relaxed - tension slows down your reaction time</li>
-              <li>Practice regularly to build muscle memory</li>
-              <li>Find your optimal tapping rhythm and stick to it</li>
-            </ul>
-          </div>
-          
-          <div class="glass-card p-6 rounded-xl">
-            <h4 class="text-xl font-heading text-secondary mb-3">🔥 Challenge Modes</h4>
-            <p>Experience different difficulty levels with varying tile speeds, patterns, and special challenge tiles that require precise timing and strategy.</p>
-          </div>
-        </div>
-      `,
-    },
+  const scrollToDownload = () => {
+    const element = document.getElementById("download")
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
   }
 
   const openGameModal = (gameKey: string) => {
@@ -189,7 +80,7 @@ export function ExploreSection() {
                   <Star className="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8 text-secondary" />
                 </div>
                 <div
-                  className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 floating glass-card p-2 sm:p-4 rounded-2xl pulse-glow z-0"
+                  className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-2 floating glass-card p-2 sm:p-4 rounded-2xl pulse-glow z-0"
                   style={{ animationDelay: "1s" }}
                 >
                   <Users className="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8 text-primary" />
@@ -250,6 +141,7 @@ export function ExploreSection() {
 
               <Button
                 size="lg"
+                onClick={scrollToDownload}
                 className="bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 pulse-glow text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 font-heading w-full sm:w-auto"
               >
                 <Gamepad2 className="mr-2 h-5 w-5" />

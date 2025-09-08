@@ -1,11 +1,18 @@
 import { Button } from "@/components/ui/button"
-import { Percent, Gift, Zap, Crown } from "lucide-react"
+import { Percent, Gift, Zap, Crown, Star } from "lucide-react"
 
 export function DiscountsSection() {
+  const scrollToDownload = () => {
+    const element = document.getElementById("download")
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
     <section id="discounts" className="py-12 md:py-24 relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-bl from-secondary/10 to-primary/10"></div>
+      <div className="absolute inset-0 bg-gradient-to-l from-secondary/5 to-primary/5"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
@@ -47,13 +54,16 @@ export function DiscountsSection() {
               </div>
             </div>
 
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-secondary to-primary hover:from-secondary/80 hover:to-primary/80 pulse-glow text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-3 md:py-4 font-orbitron w-full sm:w-auto"
-            >
-              <Percent className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="font-orbitron drop-shadow-sm">Start Earning Discounts</span>
-            </Button>
+            <div className="flex justify-center">
+              <Button
+                size="lg"
+                onClick={scrollToDownload}
+                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 pulse-glow text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6 h-12 sm:h-14 md:h-16 font-heading"
+              >
+                <Star className="mr-2 h-5 w-5" />
+                Start Earning Discounts
+              </Button>
+            </div>
 
             <p className="text-sm text-muted-foreground italic">It's never too late to start unlocking deals.</p>
           </div>
