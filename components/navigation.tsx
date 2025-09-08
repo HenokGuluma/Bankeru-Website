@@ -15,23 +15,32 @@ export function Navigation() {
   const [activeSection, setActiveSection] = useState("home")
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = navItems.map((item) => item.href.slice(1))
-      const scrollPosition = window.scrollY + 100
+    let ticking = false
 
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const sections = navItems.map((item) => item.href.slice(1))
+          const scrollPosition = window.scrollY + 100
+
+          for (const section of sections) {
+            const element = document.getElementById(section)
+            if (element) {
+              const { offsetTop, offsetHeight } = element
+              if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                setActiveSection(section)
+                break
+              }
+            }
           }
-        }
+          ticking = false
+        })
+        ticking = true
       }
     }
 
-    window.addEventListener("scroll", handleScroll)
+    // Use passive event listener for better performance
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -51,7 +60,7 @@ export function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-background/10 border-b border-white/20 shadow-2xl">
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-background/10 border-b border-white/20 shadow-2xl" style={{ willChange: 'transform' }}>
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div className="flex items-center justify-between h-28 sm:h-30 md:h-32">
           <div className="flex items-center">

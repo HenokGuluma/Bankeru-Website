@@ -22,13 +22,13 @@ export function HeroSection() {
       </div>
 
       {/* Floating Elements */}
-      <div className="absolute top-32 left-10 floating">
+      <div className="absolute top-32 left-10 floating" style={{ willChange: 'transform' }}>
         <div className="w-4 h-4 bg-primary rounded-full glow-effect"></div>
       </div>
-      <div className="absolute top-52 right-20 floating" style={{ animationDelay: "1s" }}>
+      <div className="absolute top-52 right-20 floating" style={{ animationDelay: "1s", willChange: 'transform' }}>
         <div className="w-6 h-6 bg-secondary rounded-full glow-effect"></div>
       </div>
-      <div className="absolute bottom-40 left-20 floating" style={{ animationDelay: "2s" }}>
+      <div className="absolute bottom-40 left-20 floating" style={{ animationDelay: "2s", willChange: 'transform' }}>
         <div className="w-3 h-3 bg-primary rounded-full glow-effect"></div>
       </div>
 

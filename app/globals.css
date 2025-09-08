@@ -175,6 +175,26 @@
     scroll-behavior: smooth;
   }
 
+  /* Improve mobile scrolling performance */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Reduce animations for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Optimize mobile touch scrolling */
+  body {
+    overscroll-behavior: contain;
+  }
+
   /* Added font classes for gaming typography */
   .font-heading {
     font-family: var(--font-orbitron);
