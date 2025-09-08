@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Percent, Gift, Zap, Crown, Star } from "lucide-react"
 

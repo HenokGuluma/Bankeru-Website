@@ -1,5 +1,7 @@
 "use client"
 
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Gamepad2, Users, Trophy, Target, Zap, Star, Play } from "lucide-react"
