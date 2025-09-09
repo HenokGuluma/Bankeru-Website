@@ -1,7 +1,5 @@
 "use client"
 
-"use client"
-
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Gamepad2, Users, Trophy, Target, Zap, Star, Play } from "lucide-react"
@@ -78,11 +76,11 @@ export function ExploreSection() {
                 />
 
                 {/* Floating Game Icons */}
-                <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 floating glass-card p-2 sm:p-4 rounded-2xl pulse-glow z-0">
+                <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 floating glass-card p-2 sm:p-4 rounded-2xl pulse-glow -z-10 pointer-events-none">
                   <Star className="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8 text-secondary" />
                 </div>
                 <div
-                  className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-2 floating glass-card p-2 sm:p-4 rounded-2xl pulse-glow z-0"
+                  className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-2 floating glass-card p-2 sm:p-4 rounded-2xl pulse-glow -z-10 pointer-events-none"
                   style={{ animationDelay: "1s" }}
                 >
                   <Users className="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8 text-primary" />
@@ -144,7 +142,7 @@ export function ExploreSection() {
               <Button
                 size="lg"
                 onClick={scrollToDownload}
-                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 pulse-glow text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 font-heading w-full sm:w-auto"
+                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 pulse-glow text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 font-heading w-full sm:w-auto relative z-50 pointer-events-auto"
               >
                 <Gamepad2 className="mr-2 h-5 w-5" />
                 Start Playing Now

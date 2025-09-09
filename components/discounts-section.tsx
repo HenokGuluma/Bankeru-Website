@@ -60,7 +60,7 @@ export function DiscountsSection() {
               <Button
                 size="lg"
                 onClick={scrollToDownload}
-                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 pulse-glow text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6 h-12 sm:h-14 md:h-16 font-heading"
+                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 pulse-glow text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6 h-12 sm:h-14 md:h-16 font-heading relative z-50 pointer-events-auto"
               >
                 <Star className="mr-2 h-5 w-5" />
                 Start Earning Discounts
