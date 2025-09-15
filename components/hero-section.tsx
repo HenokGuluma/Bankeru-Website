@@ -21,14 +21,14 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,64,129,0.15),transparent_50%)]"></div>
       </div>
 
-      {/* Floating Elements */}
-      <div className="absolute top-32 left-10 floating" style={{ willChange: 'transform' }}>
+      {/* Floating Elements - Optimized for mobile */}
+      <div className="hidden sm:block absolute top-32 left-10 floating" style={{ willChange: 'transform' }}>
         <div className="w-4 h-4 bg-primary rounded-full glow-effect"></div>
       </div>
-      <div className="absolute top-52 right-20 floating" style={{ animationDelay: "1s", willChange: 'transform' }}>
+      <div className="hidden sm:block absolute top-52 right-20 floating" style={{ animationDelay: "1s", willChange: 'transform' }}>
         <div className="w-6 h-6 bg-secondary rounded-full glow-effect"></div>
       </div>
-      <div className="absolute bottom-40 left-20 floating" style={{ animationDelay: "2s", willChange: 'transform' }}>
+      <div className="hidden sm:block absolute bottom-40 left-20 floating" style={{ animationDelay: "2s", willChange: 'transform' }}>
         <div className="w-3 h-3 bg-primary rounded-full glow-effect"></div>
       </div>
 
@@ -104,7 +104,10 @@ export function HeroSection() {
                 style={{
                   maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
                   WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
+                  willChange: "auto", // Remove will-change for static images
                 }}
+                loading="eager"
+                decoding="async"
               />
               <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 glass-card p-2 sm:p-4 rounded-2xl pulse-glow">
                 <Gamepad2 className="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8 text-primary" />

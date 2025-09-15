@@ -231,12 +231,12 @@ export function ExploreSection() {
                   className="w-full h-auto max-w-xs sm:max-w-sm md:max-w-md mx-auto rounded-3xl glass-card p-2 sm:p-4"
                 />
 
-                {/* Floating Game Icons */}
-                <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 floating glass-card p-2 sm:p-4 rounded-2xl pulse-glow -z-10 pointer-events-none">
+                {/* Floating Game Icons - Hidden on mobile for better performance */}
+                <div className="hidden sm:block absolute -top-2 -right-2 sm:-top-4 sm:-right-4 floating glass-card p-2 sm:p-4 rounded-2xl pulse-glow -z-10 pointer-events-none">
                   <Star className="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8 text-secondary" />
                 </div>
                 <div
-                  className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-2 floating glass-card p-2 sm:p-4 rounded-2xl pulse-glow -z-10 pointer-events-none"
+                  className="hidden sm:block absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-2 floating glass-card p-2 sm:p-4 rounded-2xl pulse-glow -z-10 pointer-events-none"
                   style={{ animationDelay: "1s" }}
                 >
                   <Users className="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8 text-primary" />

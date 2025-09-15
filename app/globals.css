@@ -129,45 +129,72 @@
     @apply bg-background text-foreground font-sans;
   }
 
-  /* Added custom animations and glass morphism effects */
+  /* Optimized animations and glass morphism effects for mobile performance */
   .glass-card {
-    backdrop-filter: blur(20px);
     background: var(--card);
     border: 1px solid var(--border);
+    /* Reduce blur on mobile devices */
+    backdrop-filter: blur(8px);
   }
 
+  /* Simplified glow effects for better performance */
   .glow-effect {
-    box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary), 0 0 60px var(--primary);
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
   }
 
   .text-glow {
-    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+    text-shadow: 0 0 8px currentColor;
   }
 
+  /* Optimized floating animation with GPU acceleration */
   .floating {
+    will-change: transform;
     animation: floating 3s ease-in-out infinite;
+    transform: translateZ(0); /* Force hardware acceleration */
   }
 
   @keyframes floating {
-    0%,
-    100% {
-      transform: translateY(0px);
+    0%, 100% {
+      transform: translateY(0px) translateZ(0);
     }
     50% {
-      transform: translateY(-10px);
+      transform: translateY(-8px) translateZ(0);
     }
   }
 
+  /* Simplified pulse glow for better performance */
   .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite alternate;
+    will-change: box-shadow;
+    animation: pulse-glow 3s ease-in-out infinite alternate;
   }
 
   @keyframes pulse-glow {
     from {
-      box-shadow: 0 0 20px var(--primary);
+      box-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
     }
     to {
-      box-shadow: 0 0 30px var(--primary), 0 0 40px var(--primary);
+      box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+    }
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    .glass-card {
+      backdrop-filter: blur(4px); /* Reduce blur further on mobile */
+    }
+    
+    .glow-effect {
+      box-shadow: 0 0 8px rgba(0, 188, 212, 0.2); /* Lighter glow on mobile */
+    }
+    
+    /* Disable some heavy animations on mobile */
+    .floating {
+      animation-duration: 4s; /* Slower animation */
+    }
+    
+    .pulse-glow {
+      animation: none; /* Disable pulse glow on mobile */
+      box-shadow: 0 0 8px rgba(0, 188, 212, 0.2);
     }
   }
 
@@ -178,6 +205,49 @@
   /* Improve mobile scrolling performance */
   * {
     -webkit-overflow-scrolling: touch;
+    /* Prevent unnecessary repaints */
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  /* Optimize mobile touch scrolling and performance */
+  body {
+    overscroll-behavior: contain;
+    /* Optimize scroll performance */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent momentum scrolling issues */
+    position: relative;
+    /* Improve mobile rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Mobile-specific performance optimizations */
+  @media (max-width: 768px) {
+    /* Disable expensive transforms on mobile */
+    .floating {
+      animation-play-state: paused;
+    }
+    
+    /* Reduce backdrop filters on mobile */
+    .glass-card {
+      backdrop-filter: none;
+      background: rgba(8, 8, 20, 0.9);
+    }
+    
+    /* Simplify shadows on mobile */
+    .glow-effect,
+    .pulse-glow {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Optimize text rendering */
+    .text-glow {
+      text-shadow: none;
+    }
   }
 
   /* Reduce animations for users who prefer reduced motion */
@@ -188,11 +258,11 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
-  }
-
-  /* Optimize mobile touch scrolling */
-  body {
-    overscroll-behavior: contain;
+    
+    .floating,
+    .pulse-glow {
+      animation: none !important;
+    }
   }
 
   /* Added font classes for gaming typography */
