@@ -60,7 +60,7 @@ export function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-background/95 border-b border-white/20 shadow-2xl" style={{ willChange: 'transform' }}>
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-background/80 border-b border-white/20 shadow-2xl">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
         <div className="flex items-center justify-between h-28 sm:h-30 md:h-32">
           <div className="flex items-center">

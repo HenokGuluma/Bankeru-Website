@@ -1,3 +1,4 @@
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -127,17 +128,18 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
   }
 
-  /* Optimized animations and glass morphism effects for mobile performance */
+  /* Glass morphism effects */
   .glass-card {
     background: var(--card);
     border: 1px solid var(--border);
-    /* Reduce blur on mobile devices */
     backdrop-filter: blur(8px);
   }
 
-  /* Simplified glow effects for better performance */
+  /* Glow effects */
   .glow-effect {
     box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
   }
@@ -146,25 +148,22 @@
     text-shadow: 0 0 8px currentColor;
   }
 
-  /* Optimized floating animation with GPU acceleration */
+  /* Floating animation */
   .floating {
-    will-change: transform;
     animation: floating 3s ease-in-out infinite;
-    transform: translateZ(0); /* Force hardware acceleration */
   }
 
   @keyframes floating {
     0%, 100% {
-      transform: translateY(0px) translateZ(0);
+      transform: translateY(0px);
     }
     50% {
-      transform: translateY(-8px) translateZ(0);
+      transform: translateY(-8px);
     }
   }
 
-  /* Simplified pulse glow for better performance */
+  /* Pulse glow */
   .pulse-glow {
-    will-change: box-shadow;
     animation: pulse-glow 3s ease-in-out infinite alternate;
   }
 
@@ -177,73 +176,8 @@
     }
   }
 
-  /* Mobile-specific optimizations */
-  @media (max-width: 768px) {
-    .glass-card {
-      backdrop-filter: blur(4px); /* Reduce blur further on mobile */
-    }
-    
-    .glow-effect {
-      box-shadow: 0 0 8px rgba(0, 188, 212, 0.2); /* Lighter glow on mobile */
-    }
-    
-    /* Disable some heavy animations on mobile */
-    .floating {
-      animation-duration: 4s; /* Slower animation */
-    }
-    
-    .pulse-glow {
-      animation: none; /* Disable pulse glow on mobile */
-      box-shadow: 0 0 8px rgba(0, 188, 212, 0.2);
-    }
-  }
-
   html {
     scroll-behavior: smooth;
-  }
-
-  /* Improve mobile scrolling performance */
-  * {
-    -webkit-overflow-scrolling: touch;
-    /* Prevent unnecessary repaints */
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-
-  /* Optimize mobile scrolling performance only */
-  body {
-    -webkit-overflow-scrolling: touch;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Mobile scroll performance improvements */
-  @media (max-width: 768px) {
-    /* Use transform3d to enable hardware acceleration for scrolling */
-    * {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-    }
-    
-    /* Optimize scroll container */
-    body {
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
-      will-change: scroll-position;
-    }
-    
-    /* Reduce animation complexity on mobile for better scroll performance */
-    .floating {
-      animation-duration: 4s;
-    }
-    
-    .pulse-glow {
-      animation: none;
-      box-shadow: 0 0 8px rgba(0, 188, 212, 0.2);
-    }
   }
 
   /* Reduce animations for users who prefer reduced motion */
@@ -261,7 +195,7 @@
     }
   }
 
-  /* Added font classes for gaming typography */
+  /* Font classes for gaming typography */
   .font-heading {
     font-family: var(--font-orbitron);
     font-weight: 600;
