@@ -232,8 +232,8 @@
       animation-play-state: paused;
     }
     
-    /* Reduce backdrop filters on mobile */
-    .glass-card {
+    /* Reduce backdrop filters on mobile for cards only, not navigation or dialogs */
+    .glass-card:not(nav):not([data-slot*="dialog"]):not([data-slot*="sheet"]) {
       backdrop-filter: none;
       background: rgba(8, 8, 20, 0.9);
     }
@@ -248,6 +248,27 @@
     .text-glow {
       text-shadow: none;
     }
+  }
+
+  /* Ensure dialogs and sheets maintain proper backdrop blur and positioning */
+  [data-slot*="dialog"],
+  [data-slot*="sheet"] {
+    backdrop-filter: blur(8px) !important;
+  }
+
+  /* Fix dialog content positioning */
+  [data-slot="dialog-content"] {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+
+  /* Fix sheet positioning */
+  [data-slot="sheet-content"] {
+    backdrop-filter: blur(8px) !important;
   }
 
   /* Reduce animations for users who prefer reduced motion */
