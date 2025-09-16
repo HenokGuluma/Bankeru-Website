@@ -250,24 +250,9 @@
     }
   }
 
-  /* Ensure dialogs and sheets maintain proper backdrop blur and positioning */
+  /* Ensure dialogs and sheets maintain proper backdrop blur */
   [data-slot*="dialog"],
   [data-slot*="sheet"] {
-    backdrop-filter: blur(8px) !important;
-  }
-
-  /* Fix dialog content positioning */
-  [data-slot="dialog-content"] {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    max-height: 90vh !important;
-    overflow-y: auto !important;
-  }
-
-  /* Fix sheet positioning */
-  [data-slot="sheet-content"] {
     backdrop-filter: blur(8px) !important;
   }
 
