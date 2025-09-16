@@ -213,47 +213,37 @@
     transform: translateZ(0);
   }
 
-  /* Optimize mobile touch scrolling and performance */
+  /* Optimize mobile scrolling performance only */
   body {
-    overscroll-behavior: contain;
-    /* Optimize scroll performance */
     -webkit-overflow-scrolling: touch;
-    /* Prevent momentum scrolling issues */
-    position: relative;
-    /* Improve mobile rendering */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Mobile-specific performance optimizations */
+  /* Mobile scroll performance improvements */
   @media (max-width: 768px) {
-    /* Disable expensive transforms on mobile */
+    /* Use transform3d to enable hardware acceleration for scrolling */
+    * {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    
+    /* Optimize scroll container */
+    body {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      will-change: scroll-position;
+    }
+    
+    /* Reduce animation complexity on mobile for better scroll performance */
     .floating {
-      animation-play-state: paused;
+      animation-duration: 4s;
     }
     
-    /* Reduce backdrop filters on mobile for cards only, not navigation or dialogs */
-    .glass-card:not(nav):not([data-slot*="dialog"]):not([data-slot*="sheet"]) {
-      backdrop-filter: none;
-      background: rgba(8, 8, 20, 0.9);
-    }
-    
-    /* Simplify shadows on mobile */
-    .glow-effect,
     .pulse-glow {
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      animation: none;
+      box-shadow: 0 0 8px rgba(0, 188, 212, 0.2);
     }
-    
-    /* Optimize text rendering */
-    .text-glow {
-      text-shadow: none;
-    }
-  }
-
-  /* Ensure dialogs and sheets maintain proper backdrop blur */
-  [data-slot*="dialog"],
-  [data-slot*="sheet"] {
-    backdrop-filter: blur(8px) !important;
   }
 
   /* Reduce animations for users who prefer reduced motion */

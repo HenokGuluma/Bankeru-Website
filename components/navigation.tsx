@@ -105,7 +105,7 @@ export function Navigation() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden backdrop-blur-2xl bg-background/98 border-t border-white/20">
+        <div className="md:hidden backdrop-blur-2xl bg-background/90 border-t border-white/20">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
               <button
