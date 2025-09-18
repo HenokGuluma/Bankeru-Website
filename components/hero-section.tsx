@@ -37,7 +37,7 @@ export function HeroSection() {
           {/* Content */}
           <div className="space-y-4 sm:space-y-6 md:space-y-8 relative z-20">
             <div className="space-y-3 sm:space-y-4">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-heading text-balance leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-6xl xl:text-7xl font-heading text-balance leading-tight">
                 <span className="text-foreground drop-shadow-[0_2px_4px_rgba(255,255,255,0.3)]">Ethiopia's Best</span>
                 <br />
                 <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
